@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: seata-bussiness-provider
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #新的驱动需要在URL中添加时区设置，否则会报错
+    url: jdbc:mysql://192.168.2.119:28002/seata?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+dubbo:
+  application:
+    name: seata-bussiness-provider
+  registry:
+    address: nacos://192.168.2.119:11125
+  protocol:
+    name: dubbo
+    port: 20883
+

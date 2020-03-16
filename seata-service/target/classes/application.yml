@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: seata-service
+
+dubbo:
+  application:
+    name: seata-service
+  registry:
+    address: nacos://192.168.2.119:11125
+
+server:
+  port: 6767
