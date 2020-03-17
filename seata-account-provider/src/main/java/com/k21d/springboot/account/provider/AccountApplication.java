@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "com.k21d.springboot.account.provider")
-@EnableDubbo(scanBasePackages = "com.k21d.springboot.account.provider.service")
+@EnableDubbo(scanBasePackages = "com.k21d.springboot.account.provider")
 @MapperScan("com.k21d.springboot.account.provider.mapper")
 public class AccountApplication {
     public static void main(String[] args) {

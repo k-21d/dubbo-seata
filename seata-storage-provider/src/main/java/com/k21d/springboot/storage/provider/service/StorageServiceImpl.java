@@ -1,22 +1,35 @@
 package com.k21d.springboot.storage.provider.service;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.k21d.springboot.api.entity.CommodityDTO;
-import com.k21d.springboot.api.service.IStorageService;
+import com.k21d.springboot.api.enums.RspStatusEnum;
+import com.k21d.springboot.api.response.ObjectResponse;
+import com.k21d.springboot.storage.provider.entity.Storage;
 import com.k21d.springboot.storage.provider.mapper.StorageMapper;
-import io.seata.core.context.RootContext;
-import org.apache.dubbo.config.annotation.Service;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
-public class StorageServiceImpl implements IStorageService {
+@Slf4j
+public class StorageServiceImpl extends ServiceImpl<StorageMapper, Storage> implements IStorageService {
     @Autowired
     private StorageMapper storageMapper;
-    public String decreaseStorage(CommodityDTO commodityDTO) {
-        System.out.println("全局事务id ：" + RootContext.getXID());
+    @Override
+    public ObjectResponse decreaseStorage(CommodityDTO commodityDTO) {
         int storage = storageMapper.decreaseStorage(commodityDTO.getCommodityCode(), commodityDTO.getCount());
+        ObjectResponse<Object> response = new ObjectResponse<>();
+
         if (storage > 0){
-            return "ok";
+            response.setStatus(RspStatusEnum.SUCCESS.getCode());
+            response.setMessage(RspStatusEnum.SUCCESS.getMessage());
+            return response;
         }
-        return "fail";
+
+        response.setStatus(RspStatusEnum.FAIL.getCode());
+        response.setMessage(RspStatusEnum.FAIL.getMessage());
+        return response;
     }
+
+
 }

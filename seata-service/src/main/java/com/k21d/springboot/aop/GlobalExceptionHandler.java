@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DefaultException.class)
     @ResponseBody
     public ObjectResponse defaultException(DefaultException e){
-        log.error("【系统抛出SinochemException异常】 —— 异常内容如下：{}" , e);
+        log.error("【系统抛出defaultException异常】 —— 异常内容如下：{}" , e);
         ObjectResponse objectResponse = new ObjectResponse<>();
         objectResponse.setStatus(RspStatusEnum.FAIL.getCode());
         objectResponse.setMessage(RspStatusEnum.FAIL.getMessage());

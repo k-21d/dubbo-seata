@@ -22,7 +22,7 @@
     <!--创建订单-->
     <insert id="createOrder" keyProperty="id" useGeneratedKeys="true"
             parameterType="com.k21d.springboot.order.provider.entity.Order">
-      insert into t_order values(null,#{order.orderNo},#{order.userId},#{order.commodityCode},${order.count},${order.amount})
+      insert into `order` values(null,#{order.orderNo},#{order.userId},#{order.commodityCode},${order.count},${order.amount})
     </insert>
 
 </mapper>

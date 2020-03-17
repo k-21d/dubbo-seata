@@ -2,10 +2,11 @@ package com.k21d.springboot.order.provider.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
-
+@TableName("t_order")
 public class Order  extends Model<Order> {
 
     private static final long serialVersionUID = 1L;
